@@ -31,7 +31,7 @@ If your solution has a long standing application, it is inevitable that the solu
 #### Installation after build
 1. Clone the repository or download the zipped file from `https://github.com/ekstep/ML-Workbench.git`
 2. Change directory into ML-Workbench
-3. Run `bash build.sh`
+3. Run `AIRFLOW_GPL_UNIDECODE=yes bash build.sh`
 4. Install - `pip install  bin/daggit-0.5.0.tar.gz`
 
 ### DAG Execution

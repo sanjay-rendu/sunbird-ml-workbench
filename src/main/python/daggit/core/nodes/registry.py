@@ -25,4 +25,7 @@ def get_node_callable(operator, module_path=None): #get_op_callable
                 module = importlib.import_module(path + '.' + operator_module)
             except BaseException:
                 continue
-        return getattr(module, operator_name)
+        if 'module' in locals():
+            return getattr(module, operator_name)
+        else:
+            raise RuntimeError('Operator "{}" not in the library. Check the DAG!'.format(operator))

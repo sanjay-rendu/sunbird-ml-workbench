@@ -8,3 +8,4 @@ framework/build_env
 .pybuilder
 .tox
 DAGGIT_HOME
+.idea
