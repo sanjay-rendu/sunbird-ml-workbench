@@ -35,6 +35,10 @@ If your solution has a long standing application, it is inevitable that the solu
 4. Install - `pip install  bin/daggit-0.5.0.tar.gz`
 
 ### DAG Execution
+
+#### Set home directory for daggit
+`export DAGGIT_HOME="/path/to/folder""` in bash_profile
+
 #### Inititalize a DAG
 1. Use Command `daggit init <path_to_yaml_file>`
 #### Run a DAG
