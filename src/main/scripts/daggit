@@ -132,4 +132,4 @@ if __name__ == '__main__':
         run(args.dag_id, args.clear_all, args.clear_failed)
 
     if args.version:
-        print("version - 0.0.2")
+        print("version - 0.5.0")
