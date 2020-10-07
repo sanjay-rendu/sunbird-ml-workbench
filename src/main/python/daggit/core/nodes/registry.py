@@ -20,6 +20,8 @@ def get_node_callable(operator, module_path=None): #get_op_callable
                     operator_dir = os.path.join(root, "nodes")
                     module_path_list.append(
                         operator_dir[operator_dir.rfind("daggit"):].replace("/", "."))
+        if "daggit_extra" in os.environ:
+            module_path_list.append(os.environ["daggit_extra"])
         for path in module_path_list:
             try:
                 module = importlib.import_module(path + '.' + operator_module)
