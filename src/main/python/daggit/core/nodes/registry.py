@@ -1,9 +1,9 @@
 import importlib
 import os
+import sys
 
 this_dir = os.path.dirname(os.path.realpath(__file__))
 abs_path = os.path.abspath(os.path.join(this_dir, '../..'))
-
 
 def get_node_callable(operator, module_path=None): #get_op_callable
     if module_path:
@@ -16,12 +16,13 @@ def get_node_callable(operator, module_path=None): #get_op_callable
         module_path_list = []
         for root, dirs, _ in os.walk(abs_path):
             if len(dirs) > 0:
-                if "nodes" in dirs:                    
+                if "nodes" in dirs:
                     operator_dir = os.path.join(root, "nodes")
                     module_path_list.append(
                         operator_dir[operator_dir.rfind("daggit"):].replace("/", "."))
         if "daggit_extra" in os.environ:
-            module_path_list.append(os.environ["daggit_extra"])
+            sys.path.append(os.environ['daggit_extra'])
+            module = importlib.import_module(operator_module)
         for path in module_path_list:
             try:
                 module = importlib.import_module(path + '.' + operator_module)
@@ -31,3 +32,4 @@ def get_node_callable(operator, module_path=None): #get_op_callable
             return getattr(module, operator_name)
         else:
             raise RuntimeError('Operator "{}" not in the library. Check the DAG!'.format(operator))
+
