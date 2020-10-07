@@ -36,9 +36,6 @@ If your solution has a long standing application, it is inevitable that the solu
 
 ### DAG Execution
 
-#### Set home directory for daggit
-`export DAGGIT_HOME="/path/to/folder""` in bash_profile
-
 #### Inititalize a DAG
 1. Use Command `daggit init <path_to_yaml_file>`
 #### Run a DAG
@@ -46,6 +43,13 @@ If your solution has a long standing application, it is inevitable that the solu
 #### Seek help
 1. Use - `daggit --help` to know more about the command
 2. Help on daggit commands can be found using `daggit <command> --help` 
+
+
+#### [Optional] Set home directory for daggit
+`export DAGGIT_HOME="/path/to/folder"` in bash_profile. This folder will contain all the intermediate files from the execution. By default, `DAGGIT_HOME` folder is created in the current working directory otherwise.
+  
+#### [Optional] Import custom modules
+`export daggit_extra="/path/to/module"` in bash_profile. Custom nodes defined in this python module directory will be available in the experiment. 
 
 ## License
 
