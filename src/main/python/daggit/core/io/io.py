@@ -7,6 +7,7 @@ import os
 import json
 import logging
 import configparser
+import os
 
 from ..base.config import DAGGIT_HOME, STORE, STORAGE_FORMAT
 from ..base.utils import create_dir
@@ -45,7 +46,8 @@ class DataType(object):
     @staticmethod
     def get_temp_path(dag_id, task_id=None, data_alias=None):
 
-        os.environ['DAGGIT_HOME'] = DAGGIT_HOME
+        if "DAGGIT_HOME" not in os.environ:
+            os.environ['DAGGIT_HOME'] = DAGGIT_HOME
         store_type = STORE
 
         if store_type == 'Local':
