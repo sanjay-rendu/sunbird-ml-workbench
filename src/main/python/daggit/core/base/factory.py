@@ -105,6 +105,14 @@ class Node(object):
                     task_id=self.task_id,
                     data_alias=data_label,
                     external_ref=self.graph_inputs[data_label])
+
+            elif data_label in self.graph_outputs:
+                data_object = NodeData(
+                    dag_id=self.dag_id,
+                    task_id=self.task_id,
+                    parent_task=self.task_id,
+                    data_alias=data_label,
+                    external_ref=self.graph_outputs[data_label])
             else:
                 try:
                     data_name = data_label.split(".")[1]
